@@ -1,0 +1,115 @@
+import streamlit as st
+
+import asyncio
+
+from crewai import Agent, Task, Crew, Process, LLM
+
+st.set page_config(page_title="Multi-Agent Al Hub", page_icon=" ", layout="centered")
+
+st.title(" Autonomous Multi-Agent System")
+
+st.write("A collaborative Al system powered by CrewAl & Google Gemini.")
+
+#Web Inputs
+
+api_key= st.text input("Enter your Google Gemini API Key:", type="password")
+topic = st.text_input("Enter Research Topic:", placeholder="e.g. Al in Renewable Energy Grids")
+if st.button(" Run Multi-Agent System"):
+
+if not api_key:
+
+         st.warning("Please enter your Gemini API Key first.")
+
+elif not topic:
+
+         st.warning("Please enter a research topic.")
+else:
+        with st.spinner("Agents are researching and writing your report... please wait..."):
+
+try:
+
+#LLM Engine
+
+llm=LLM(
+    model="gemini/gemini-2.0-flash",
+    api_key_api_key
+)
+#Researcher Agent
+
+researcher = Agent(
+
+role="Senior Al Researcher",
+
+goal=f"Discover top trends and breakthroughs regarding: {topic)",
+
+backstory="You are an expert researcher with an eye for breakthrough insights.",
+
+llm=llm,
+verbose=True
+)
+
+#Writer Agent
+
+writer = Agent(
+
+role="Technical Brief Writer",
+
+goal=f"Summarize research on (topic) into an executive brief",
+
+backstory="You are an engineering communicator who writes clear project
+
+llm=llm,
+
+verbose=True
+)
+
+#Tasks
+
+task1 = Task(
+
+description=f"List 3 key ways technology/AI is transforming (topic).",
+
+expected_output="3 structured bullet points with technical specifics.",
+
+agent=researcher
+
+)
+
+task2 =Task(
+
+description="Using the researcher findings, write a 2-paragraph seminarsummary.",
+
+expected_output="A polished 2-paragraph executive report.",
+
+agent=writer
+
+  # Crew
+
+crew = Crew(
+
+agents=[researcher, writer],
+
+tasks=[task1, task2],
+
+process= Process.sequential
+)
+
+# Run asynchronous execution for web
+
+loop = asyncio.new_event_loop()
+
+asyncio.set_event_loop(loop)
+
+result = loop.run_until_complete(crew.kickoff_async())
+
+st.success(" Multi-Agent Collaboration Completed!")
+
+st.subheader(" Final Generated Report:")
+
+st.markdown(result.raw if hasattr(result, "raw") else str(result))
+
+except Exception as e:
+      st.error(f"Error occurred: {e}")
+
+
+
