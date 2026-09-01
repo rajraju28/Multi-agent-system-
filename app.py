@@ -27,7 +27,7 @@ if st.button("Run Multi-Agent System"):
                  verbose=True
  )
  
-            writer = Agent(
+             writer = Agent(
               role="Technical Brief Writer",
               goal=f"Summarize research on {topic} into an executive brief",
               backstory="You are an engineering communicator who writes clear project briefs.",
@@ -35,28 +35,28 @@ if st.button("Run Multi-Agent System"):
               verbose=True
  )
  
-           task1 = Task(
+            task1 = Task(
               description=f"List 3 key ways technology/AI is transforming {topic}.",
               expected_output="3 structured bullet points with technical specifics.",
               agent=researcher
  )
  
-          task2 = Task(
+           task2 = Task(
              description="Using the researcher findings, write a 2-paragraph seminar summary.",
              expected_output="A polished 2-paragraph executive report.",
              agent=writer
 )
 
-          crew = Crew(
+           crew = Crew(
              agents=[researcher, writer],
              tasks=[task1, task2],
              process=Process.sequential
  )
-         result = crew.kickoff()
+          result = crew.kickoff()
 
-         st.success("Multi-Agent Collaboration Completed!")
-         st.subheader("Final Generated Report:")
-         st.markdown(result.raw if hasattr(result, "raw") else str(result))
+          st.success("Multi-Agent Collaboration Completed!")
+          st.subheader("Final Generated Report:")
+          st.markdown(result.raw if hasattr(result, "raw") else str(result))
 
  except Exception as e:
       st.error(f"Error occurred: {e}")
