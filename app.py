@@ -58,6 +58,6 @@ if st.button("Run Multi-Agent System"):
              st.subheader("Final Generated Report:")
              st.markdown(result.raw if hasattr(result, "raw") else str(result))
 except:
-st.error(f"Error occurred:{e}")
+st.error("An error occurred.")
 
     
