@@ -7,16 +7,16 @@ api_key = st.text_input("Enter your Google Gemini API Key:", type="password")
 topic = st.text_input("Enter Research Topic:", placeholder="e.g. AI in Renewable Energy Grids")
 
 if st.button("Run Multi-Agent System"):
- if not api_key:
- st.warning("Please enter your Gemini API Key first.")
+    if not api_key:
+          st.warning("Please enter your Gemini API Key first.")
  elif not topic:
- st.warning("Please enter a research topic.")
+           st.warning("Please enter a research topic.")
  else:
- with st.spinner("Agents are researching and writing your report... please wait..."):
+     with st.spinner("Agents are researching and writing your report... please wait..."):
  try:
- llm = LLM(
- model="gemini/gemini-2.0-flash",
- api_key=api_key
+    llm = LLM(
+        model="gemini/gemini-2.0-flash",
+          api_key=api_key
  )
   
  researcher = Agent(
