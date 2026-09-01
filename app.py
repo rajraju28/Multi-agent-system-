@@ -11,7 +11,7 @@ st.write("A collaborative Al system powered by CrewAl & Google Gemini.")
 #Web Inputs
 
 api_key= st.text input("Enter your Google Gemini API Key:", type="password")
-topic = st.text_input("Enter Research Topic:", placeholder="e.g. Al in Renewable Energy Grids")
+topic = st.text_input("Enter Research Topic:", placeholder="e.g. AI in Renewable Energy Grids")
 if st.button(" Run Multi-Agent System"):
 
 if not api_key:
@@ -36,7 +36,7 @@ llm=LLM(
 
 researcher = Agent(
 
-role="Senior Al Researcher",
+role="Senior AI Researcher",
 
 goal=f"Discover top trends and breakthroughs regarding: {topic)",
 
@@ -54,7 +54,7 @@ role="Technical Brief Writer",
 
 goal=f"Summarize research on (topic) into an executive brief",
 
-backstory="You are an engineering communicator who writes clear project
+backstory="You are an engineering communicator who writes clear project briefs.",
 
 llm=llm,
 
