@@ -2,7 +2,7 @@ import streamlit as st
 
 from crewai import Agent, Task, Crew, Process, LLM
 
-st.set page_config(page_title="Multi-Agent Al Hub", page_icon=" ", layout="centered")
+st.set page_config(page_title="Multi-Agent Al Hub", layout="centered ")
 
 st.title(" Autonomous Multi-Agent System")
 
