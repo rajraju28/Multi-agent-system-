@@ -35,19 +35,19 @@ if st.button("Run Multi-Agent System"):
               verbose=True
  )
  
-            task1 = Task(
+             task1 = Task(
               description=f"List 3 key ways technology/AI is transforming {topic}.",
               expected_output="3 structured bullet points with technical specifics.",
               agent=researcher
  )
  
-           task2 = Task(
+            task2 = Task(
              description="Using the researcher findings, write a 2-paragraph seminar summary.",
              expected_output="A polished 2-paragraph executive report.",
              agent=writer
 )
 
-           crew = Crew(
+            crew = Crew(
              agents=[researcher, writer],
              tasks=[task1, task2],
              process=Process.sequential
