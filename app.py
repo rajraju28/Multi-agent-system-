@@ -10,7 +10,7 @@ st.write("A collaborative Al system powered by CrewAl & Google Gemini.")
 
 #Web Inputs
 
-api_key = st.text_input ("Enter your Google Gemini API key:", type ="password "
+api_key = st.text_input ("Enter your Google Gemini API key:", type ="password")
 topic = st.text_input("Enter Research Topic:", placeholder="e.g. AI in Renewable Energy Grids")
 if st.button(" Run Multi-Agent System"):
 
