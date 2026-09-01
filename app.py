@@ -1,7 +1,5 @@
 import streamlit as st
 
-import asyncio
-
 from crewai import Agent, Task, Crew, Process, LLM
 
 st.set page_config(page_title="Multi-Agent Al Hub", page_icon=" ", layout="centered")
@@ -100,7 +98,7 @@ loop = asyncio.new_event_loop()
 
 asyncio.set_event_loop(loop)
 
-result = loop.run_until_complete(crew.kickoff_async())
+result = crew.kickoff()
 
 st.success(" Multi-Agent Collaboration Completed!")
 
